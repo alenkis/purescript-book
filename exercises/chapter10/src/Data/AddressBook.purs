@@ -1,7 +1,6 @@
 module Data.AddressBook where
 
 import Prelude
-
 import Data.Argonaut (class DecodeJson, class EncodeJson)
 import Data.Argonaut.Decode.Generic (genericDecodeJson)
 import Data.Argonaut.Encode.Generic (genericEncodeJson)
@@ -25,9 +24,14 @@ data PhoneType
 
 derive instance genericPhoneType :: Generic PhoneType _
 
-instance encodeJsonPhoneType :: EncodeJson PhoneType where encodeJson = genericEncodeJson
-instance decodeJsonPhoneType :: DecodeJson PhoneType where decodeJson = genericDecodeJson
-instance showPhoneType       :: Show       PhoneType where show       = genericShow
+instance encodeJsonPhoneType :: EncodeJson PhoneType where
+  encodeJson = genericEncodeJson
+
+instance decodeJsonPhoneType :: DecodeJson PhoneType where
+  decodeJson = genericDecodeJson
+
+instance showPhoneType :: Show PhoneType where
+  show = genericShow
 
 type PhoneNumber
   = { "type" :: PhoneType

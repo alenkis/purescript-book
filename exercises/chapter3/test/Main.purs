@@ -48,18 +48,16 @@ otherJohn =
       { street: "678 Fake Rd.", city: "Fakeville", state: "NY" }
   }
 
-
 bookWithDuplicate :: AddressBook
 bookWithDuplicate =
   insertEntry john
     $ insertEntry otherJohn
-      book
+        book
 
 main :: Effect Unit
 main =
   runTest do
     runChapterExamples
-    {-  Move this block comment starting point to enable more tests
     suite "Exercise - findEntryByStreet" do
       test "Lookup existing" do
         Assert.equal (Just john)
@@ -78,7 +76,6 @@ main =
       Assert.equal book
         $ removeDuplicates bookWithDuplicate
 
--}
 runChapterExamples :: TestSuite
 runChapterExamples = do
   test "Todo for book maintainers - Add tests for chapter examples" do
