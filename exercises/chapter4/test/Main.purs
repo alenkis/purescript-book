@@ -135,8 +135,6 @@ main =
         primeFactorsTest 6 [ 3, 2 ]
         primeFactorsTest 18 [ 3, 3, 2 ]
         primeFactorsTest 210 [ 7, 5, 3, 2 ]
-
-{-  Move this block comment starting point to enable more tests
     suite "Exercise Group - Folds and Tail Recursion" do
       test "Exercise - allTrue" do
         assert "all elements true"
@@ -191,17 +189,19 @@ main =
           testls label expected path =
             test label do
               Assert.equal expected
-              -- Sorting to allow any ordering
+                -- Sorting to allow any ordering
+                
                 $ sort
                 $ map filename
                 $ largestSmallest path
+
           oneFileDir = Directory "/etc/" [ File "/etc/hosts" 300 ]
+
           emptyDir = Directory "/etc/" []
-        testls "works for root" ["/etc/hosts", "/home/user/code/js/test.js"] root
-        testls "works for a directory with one file" ["/etc/hosts"] oneFileDir
+        testls "works for root" [ "/etc/hosts", "/home/user/code/js/test.js" ] root
+        testls "works for a directory with one file" [ "/etc/hosts" ] oneFileDir
         testls "works for an empty directory" [] emptyDir
 
--}
 runChapterExamples :: TestSuite
 runChapterExamples =
   suite "Chapter Examples" do
