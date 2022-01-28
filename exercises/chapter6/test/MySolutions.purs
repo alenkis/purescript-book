@@ -1,8 +1,8 @@
 module Test.MySolutions where
 
-import Data.Ord
 import Prelude
 import Data.Generic.Rep (class Generic)
+import Data.Ord (abs)
 import Data.Show.Generic (genericShow)
 
 newtype Point
@@ -46,3 +46,15 @@ derive instance genericShape :: Generic Shape _
 
 instance showShape :: Show Shape where
   show = genericShow
+
+data NonEmpty a
+  = NonEmpty a (Array a)
+
+instance showNonEmpty :: Show a => Show (NonEmpty a) where
+  show (NonEmpty el arr) = show ([ el ] <> arr)
+
+instance eqNonEmpty :: Eq a => Eq (NonEmpty a) where
+  eq (NonEmpty e1 a1) (NonEmpty e2 a2) = e1 == e2 && a1 == a2
+
+instance semigroupNonEmpty :: Semigroup (NonEmpty a) where
+  append (NonEmpty e1 a1) (NonEmpty e2 a2) = NonEmpty e1 (a1 <> [ e2 ] <> a2)
