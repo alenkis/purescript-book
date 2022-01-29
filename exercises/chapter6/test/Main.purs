@@ -91,8 +91,6 @@ main =
           Assert.equal (NonEmpty 1 [ 2, 3, 4, 5, 6 ])
             $ NonEmpty 1 [ 2, 3 ]
             <> NonEmpty 4 [ 5, 6 ]
-
-{-  Move this block comment starting point to enable more tests
       suite "Functor NonEmpty" do
         test "map" do
           Assert.equal (NonEmpty 10 [ 20, 30 ])
@@ -135,6 +133,8 @@ main =
           Assert.equal "123"
             $ foldMap (\x -> show x)
             $ NonEmpty 1 [ 2, 3 ]
+
+{-  Move this block comment starting point to enable more tests
       suite "Foldable OneMore" do
         test "foldl" do
           Assert.equal 123
@@ -148,6 +148,7 @@ main =
           Assert.equal "123"
             $ foldMap (\x -> show x)
             $ OneMore 1 (2 : 3 : Nil)
+
       let
         withDups =
           [ Circle (Point {x: 1.0, y: 2.0}) 3.0
